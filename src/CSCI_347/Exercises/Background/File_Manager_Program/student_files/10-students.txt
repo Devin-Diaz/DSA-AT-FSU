@@ -1,0 +1,10 @@
+Sara Queen;Freshman;1.81
+Sam Pat;Sophomore;3.47
+Steve Liam;Junior;3.48
+Uma Tina;Junior;3.85
+Wes Isla;Senior;3.12
+Ursula Eve;Freshman;1.64
+Yolanda Parker;Sophomore;0.20
+Frank Ursula;Junior;0.32
+Seth Grace;Senior;2.90
+Ivy Zack;Junior;3.77

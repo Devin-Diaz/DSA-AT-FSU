@@ -1,0 +1,23 @@
+
+Linear Search Times (µs):
+
+Number of Students | Take 1  | Take 2  | Take 3
+10                 | 280 µs  | 284 µs  | 290 µs
+50                 | 805 µs  | 614 µs  | 271 µs
+100                | 223 µs  | 715 µs  | 1179 µs
+200                | 1115 µs | 1448 µs | 748 µs
+1000               | 532 µs  | 2866 µs | 302 µs
+5000               | 478 µs  | 737 µs  | 920 µs
+10000              | 357 µs  | 1685 µs | 4770 µs
+
+
+Binary Search Times (µs):
+
+Number of Students | Take 1  | Take 2  | Take 3
+10                 | 130 µs  | 127 µs  | 143 µs
+50                 | 147 µs  | 125 µs  | 105 µs
+100                | 82 µs   | 155 µs  | 102 µs
+200                | 76 µs   | 72 µs   | 74 µs
+1000               | 88 µs   | 73 µs   | 74 µs
+5000               | 74 µs   | 80 µs   | 77 µs
+10000              | 96 µs   | 110 µs  | 114 µs
