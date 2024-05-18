@@ -127,7 +127,6 @@ public class FileManagement {
         }
     }
 
-
     public static void main(String[] args) {
         //List<Student> output = parseFile("Enter file path here", Enter total items you want read);
         //Student randomStudentFromList = generateRandomStudent(output);
