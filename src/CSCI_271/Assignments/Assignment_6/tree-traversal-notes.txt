@@ -1,0 +1,136 @@
+------------------------------------------------------------------------------------------------------------------------
+Tree Traversal:
+
+    When it comes to tree traversal, 2 forms come to mind:
+        Depth-First: Stack | Breadth-First: Queue
+
+        However, there is further detail to each of these:
+
+            Depth-First: Stack | Breadth-First: Queue
+            1. Pre-order         1. Level-order
+            2. In-order
+            3. Post-order
+
+   Average time complexity is O(N) where N is number of nodes in tree
+------------------------------------------------------------------------------------------------------------------------
+PRE-ORDER:
+
+    Pre-order can be done recursively. The following is the step by step with binary trees:
+
+    1. Visit node, 2. Traverse left subtree, 3. Traverse right subtree
+
+    Given the following tree
+
+                A
+             /     \
+            B       C
+          /  \
+        D     E
+
+    We visit the nodes in the following sequence:
+
+    A, B, D, (back to B), E (back to B), (back to A), C
+    A, B, D, E, C
+
+    Recall this is done recursively, we keep going left, then back to the right, and so on.
+
+    Pseudo code:
+
+    preorder(node):
+        if node is None: return
+        visit(node)
+        preorder(node.left)
+        preorder(node.right)
+
+    Time complexity of O(N)
+------------------------------------------------------------------------------------------------------------------------
+
+IN-ORDER:
+
+    1. Traverse left-subtree, 2.Visit Node, 3. Traverse right-subtree
+
+        Given the following tree
+
+                    A
+                 /     \
+                B       C
+              /  \
+            D     E
+
+        D, B, E, A, C
+
+        Always go far left until no more, then print nodes on the way back. Head right once done with left
+
+        Pseudocode:
+
+        inorder(node):
+            if node is None: return
+            inorder(node.left)
+            visit(node)
+            inorder(node.right)
+
+        Time complexity: O(N)
+------------------------------------------------------------------------------------------------------------------------
+
+POST-ORDER:
+
+    1. Traverse left subtree, 2. Traverse right subtree, 3. Visit node
+
+        Given the following tree
+
+                    A
+                 /     \
+                B       C
+              /  \
+            D     E
+
+        D, E, B, C, A
+
+        Essentially we always visit all child nodes first then go to parents however
+        it's important to note that we start at the left most node in left subtree first
+
+        Pseudocode:
+
+        postorder(node):
+            if node is None: return
+            postorder(node.left)
+            postorder(node.right)
+            visit(node)
+
+        Time complexity: O(N)
+------------------------------------------------------------------------------------------------------------------------
+HEAPS:
+
+    Heaps are an advanced tree-based data structure used primarily for sorting and implementing priority queues. Heaps
+    are complete binary trees that have the following features:
+        - Every level is filled except the leaf nodes
+        - Every node has a maximum of 2 children
+        - All the nodes are as far left as possible, this means that every child is to the left of his parent
+
+        The way the arrays of the heap are organized are by each level. Take the following visual of a min-heap:
+
+                                                1
+                                              /  \
+                                             4    7
+                                            / \
+                                           10  21
+
+        It's array representation would like:
+                                                elements: [1, 4, 7, 10, 21]
+                                                indices:   0  1  2   3   4
+
+        If we wanted to find the children of element for we do the following calculation for the left and right
+        child nodes.
+
+        LEFT CHILD: (parent index * 2) + 1
+        RIGHT CHILD: (parent index * 2) + 2
+
+        PARENT CHILD: (child index - 1) / 2
+
+        Say we are working with the element 4 at index 1
+
+        LEFT CHILD: (2 * 1) + 1 = 3, at index 3 we have element 10
+        RIGHT CHILD: (2 * 1) + 2 = 4, at index 4 we have element 21
+
+        Say we we are at element 21 at index 4, and we want to find its parent:
+        PARENT: (4 - 1) / 2 = 1, at index 1 we have element 4 which is the parent
