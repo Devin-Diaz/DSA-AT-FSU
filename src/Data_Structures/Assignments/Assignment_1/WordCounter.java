@@ -20,7 +20,7 @@ public class WordCounter {
         int[] output = new int[0]; // Initially an empty array
 
         try {
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream("tester.txt")));
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream("negative-numbers.txt")));
             String currentLine;
 
             System.out.println("File Contents: ");
