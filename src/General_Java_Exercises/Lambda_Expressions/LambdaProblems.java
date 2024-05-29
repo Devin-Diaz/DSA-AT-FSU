@@ -14,11 +14,14 @@ package General_Java_Exercises.Lambda_Expressions;
     using expressive, concise syntax.
 */
 
+import Data_Structures.Assignments.Assignment_1.WordCounter;
 import General_Java_Exercises.Lambda_Expressions.Functional_Interfaces.SumCalculator;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.BiFunction;
 import java.util.function.LongUnaryOperator;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -110,6 +113,101 @@ public class LambdaProblems {
     }
 
     // 9. Write a Java program to implement a lambda expression to create a lambda expression to check if a number is prime.
+    public static void isPrime(int num) {
+        Predicate<Integer> prime = x -> {
+            if(x <= 1) return false;
+
+            for(int i = 2; i <= Math.sqrt(x); i++) {
+                if(x % i == 0) return false;
+            }
+            return true;
+        };
+        boolean result = prime.test(num);
+        System.out.println(result);
+    }
+
+    // 10. Write a Java program to implement a lambda expression to concatenate two strings.
+    public static void concatenateStrings(String word1, String word2) {
+        BiFunction<String, String, String> concatenate = (str1, str2) -> str1 + str2;
+        String result = concatenate.apply(word1, word2);
+        System.out.println(result);
+    }
+
+    // 11. Write a Java program to implement a lambda expression to find the maximum and minimum values in a list of integers.
+    public static void maxAndMinOfList(List<Integer> inputs) {
+        Optional<Integer> max = inputs.stream()
+                .max((x, y) -> x.compareTo(y));
+
+        Optional<Integer> min = inputs.stream()
+                .min((x, y) -> x.compareTo(y));
+
+        System.out.println(max.orElse(null) + " " + min.orElse(null));
+    }
+
+    // 12. Write a Java program to create a lambda expression to multiply and sum all elements in a list of integers.
+    public static void sumAndMultiplyList(List<Integer> inputs) {
+        int sum = inputs.stream()
+                .reduce(0, (x, y) -> x + y);
+
+        System.out.println(sum);
+
+        int product = inputs.stream()
+                .reduce(1, (x, y) -> x * y);
+
+        System.out.println(product);
+    }
+
+    // 13. Write a Java program to implement a lambda expression to count words in a sentence.
+    public static void countWordsInSentence(String sentence) {
+        String[] parsedSentence = sentence.split("\\s");
+        int totalCount = (int) Arrays.stream(parsedSentence)
+                        .count();
+
+        System.out.println(totalCount);
+    }
+
+    // 14. Write a Java program to implement a lambda expression to check if a given string is a palindrome.
+    public static void isPalindrome(String input) {
+        Predicate<String> palindrome = str -> {
+            String reversedInput = new StringBuilder(str).reverse().toString();
+            return str.equals(reversedInput);
+        };
+        boolean ans = palindrome.test(input);
+        System.out.println(ans);
+    }
+
+    public static void sumOfEvenAndOddSquares(List<Integer> inputs) {
+        int sumOfEvenSquares = inputs.stream()
+                .filter(num -> num % 2 == 0)
+                .mapToInt(num -> num * num)
+                .sum();
+
+        System.out.println("Sum of even squares: " + sumOfEvenSquares);
+
+        int sumOfOddSquares = inputs.stream()
+                .filter(num -> num % 2 != 0)
+                .mapToInt(num -> num * num)
+                .sum();
+
+        System.out.println("Sum of odd squares: " + sumOfOddSquares);
+    }
+
+    // 16. Write a Java program to implement a lambda expression to check if a list of strings contains a specific word.
+    public static void containsWord(List<String> inputs, String targetWord) {
+        Predicate<String> contains = word -> word.equals(targetWord);
+        boolean ans = inputs.stream().anyMatch(contains);
+        System.out.println(ans);
+    }
+
+    // 17. Write a Java program to implement a lambda expression to find the length of the longest and smallest string in a list.
+
+
+
+
+
+
+
+
 
 
 
@@ -123,20 +221,28 @@ public class LambdaProblems {
 
 
     public static void main(String[] args) {
-        List<String> input = Arrays.asList("gO", "DEvin", "UP uP");
+        List<String> input = Arrays.asList("GO", "DEvin", "UP uP");
+        List<Integer> dab = Arrays.asList(1, 2, 3, 4);
         List<Integer> nums = Arrays.asList(5, 2, 54, 654, 1, 3, 6, 0, 10);
         List<Double> dubs = Arrays.asList(5.5, 2.2, 54.0, 654.11, 1.3, 3.22, 6.42, 0.4, 10.0);
         List<Integer> listWithDups = Arrays.asList(1, 2, 3, 1, 4, 4, 56, 6, 56);
 
-        LambdaProblems.sumTwoInts(10, 10);
-        LambdaProblems.isStringEmpty("RAH");
-        LambdaProblems.convertStringsToLower(input);
-        LambdaProblems.filterEvensAndOdds(nums);
-        LambdaProblems.sortStrings(input);
-        LambdaProblems.averageOfDoubles(dubs);
-        LambdaProblems.removeDuplicates(listWithDups);
-        LambdaProblems.factorial(5L);
-
+//        LambdaProblems.sumTwoInts(10, 10);
+//        LambdaProblems.isStringEmpty("RAH");
+//        LambdaProblems.convertStringsToLower(input);
+//        LambdaProblems.filterEvensAndOdds(nums);
+//        LambdaProblems.sortStrings(input);
+//        LambdaProblems.averageOfDoubles(dubs);
+//        LambdaProblems.removeDuplicates(listWithDups);
+//        LambdaProblems.factorial(5L);
+//        LambdaProblems.isPrime(7);
+//        LambdaProblems.concatenateStrings("race", "car");
+//        LambdaProblems.maxAndMinOfList(nums);
+//        LambdaProblems.sumAndMultiplyList(dab);
+//        LambdaProblems.countWordsInSentence("Hello devin diaz you are cool.");
+//        LambdaProblems.isPalindrome("racecar");
+//        LambdaProblems.sumOfEvenAndOddSquares(dab);
+//        LambdaProblems.containsWord(input, "DEvin");
 
     }
 }
